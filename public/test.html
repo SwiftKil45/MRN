@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD User Management</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="./app.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body ng-app="app">
+    <div ng-controller="test">
+        <div class="table-striped">
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Join Date</th>
+                    <th>Email</th>
+                    <th>Favorite Color</th>
+                    <th></th>
+                </tr>
+                <tr class="userentry" ng-repeat="user in users">
+                    <td><button type="button" class="btn btn-default" ng-click="deleteUser(user)">Delete</button></td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{convertToDate(user.joinDate)}}</td>
+                    <td>{{user.email}}</td>
+                    <td><input type="name" class="form-control" ng-model="user.favoriteColor"></td>
+                    <td><button type="button" class="btn btn-default" ng-click="changeColor(user.username,user.favoriteColor)">Submit</button></td>
+                </tr>
+            </table>
+        </div>
+        <div style="font-size: 200%; padding-bottom: 20px;">Add New User</div>
+        <form style="width: 200px;">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="name" class="form-control" ng-model="form.name">
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="name" class="form-control" ng-model="form.username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="name" class="form-control" ng-model="form.email">
+            </div>
+            <div class="form-group">
+                <label for="color">Favorite Color:</label>
+                <input type="name" class="form-control" ng-model="form.color">
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="addUser()">Submit</button>
+        </form>
+        <!--
+        <div ng-repeat="user in users" ng-if="$index % 3 == 0" class="row">
+            <div class="col-md-2">
+                <img src="{{users[$index].image}}">
+            </div>
+            <div class="col-md-2">
+                <div>{{users[$index].name}}</div>
+                <div>{{users[$index].username}}</div>
+                <div>{{convertToDate(users[$index].joinDate)}}</div>
+                <div>{{users[$index].email}}</div>
+                <div>{{convertToDate(users[$index].birthday)}}</div>
+                <div>{{users[$index].favoriteColor}}</div>
+            </div>
+            <div class="col-md-2" ng-if="users.length > ($index + 1)">
+                <img src="{{users[$index + 1].image}}">
+            </div>
+            <div class="col-md-2">
+                <div>{{users[$index+1].name}}</div>
+                <div>{{users[$index+1].username}}</div>
+                <div>{{convertToDate(users[$index+1].joinDate)}}</div>
+                <div>{{users[$index+1].email}}</div>
+                <div>{{convertToDate(users[$index+1].birthday)}}</div>
+                <div>{{users[$index+1].favoriteColor}}</div>
+            </div>
+            <div class="col-md-2" ng-if="users.length > ($index + 2)">
+                <img src="{{users[$index + 2].image}}">
+            </div>
+            <div class="col-md-2">
+                <div>{{users[$index+2].name}}</div>
+                <div>{{users[$index+2].username}}</div>
+                <div>{{convertToDate(users[$index+2].joinDate)}}</div>
+                <div>{{users[$index+2].email}}</div>
+                <div>{{convertToDate(users[$index+2].birthday)}}</div>
+                <div>{{users[$index+2].favoriteColor}}</div>
+            </div>
+        </div>-->
+    </div>
+</body>
+
+</html>
